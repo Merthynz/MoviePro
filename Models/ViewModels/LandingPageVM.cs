@@ -1,4 +1,5 @@
-﻿using MoviePro.Models.TMDB;
+﻿using MoviePro.Models.Database;
+using MoviePro.Models.TMDB;
 
 namespace MoviePro.Models.ViewModels
 {
