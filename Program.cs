@@ -26,7 +26,12 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 builder.Services.AddTransient<SeedService>();
 
 builder.Services.AddHttpClient();
+
 builder.Services.AddScoped<IRemoteMovieService, TMDBMovieService>();
+
+builder.Services.AddScoped<IDataMappingService, TMDBMappingService>();
+
+//builder.Services.AddSingleton<IImageService, BasicImageService>();
 
 var app = builder.Build();
 
