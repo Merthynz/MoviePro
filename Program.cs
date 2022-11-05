@@ -31,7 +31,7 @@ builder.Services.AddScoped<IRemoteMovieService, TMDBMovieService>();
 
 builder.Services.AddScoped<IDataMappingService, TMDBMappingService>();
 
-//builder.Services.AddSingleton<IImageService, BasicImageService>();
+builder.Services.AddSingleton<IImageService, BasicImageService>();
 
 var app = builder.Build();
 
