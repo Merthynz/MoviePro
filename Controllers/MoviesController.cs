@@ -7,6 +7,8 @@ using MoviePro.Models.Database;
 using MoviePro.Models.Settings;
 using MoviePro.Services.Interfaces;
 
+#nullable disable
+
 namespace MoviePro.Controllers
 {
     public class MoviesController : Controller

@@ -28,10 +28,10 @@
         public bool video { get; set; }
         public float vote_average { get; set; }
         public int vote_count { get; set; }
-        public Credits credits { get; set; }
-        public Videos videos { get; set; }
-        public Release_Dates release_dates { get; set; }
         public Images images { get; set; }
+        public Videos videos { get; set; }
+        public Credits credits { get; set; }
+        public Release_Dates release_dates { get; set; }
     }
 
     public class Belongs_To_Collection
@@ -40,6 +40,32 @@
         public string name { get; set; }
         public string poster_path { get; set; }
         public string backdrop_path { get; set; }
+    }
+
+    public class Images
+    {
+        public object[] backdrops { get; set; }
+        public object[] logos { get; set; }
+        public object[] posters { get; set; }
+    }
+
+    public class Videos
+    {
+        public VideoResult[] results { get; set; }
+    }
+
+    public class VideoResult
+    {
+        public string iso_639_1 { get; set; }
+        public string iso_3166_1 { get; set; }
+        public string name { get; set; }
+        public string key { get; set; }
+        public string site { get; set; }
+        public int size { get; set; }
+        public string type { get; set; }
+        public bool official { get; set; }
+        public string published_at { get; set; }
+        public string id { get; set; }
     }
 
     public class Credits
@@ -79,25 +105,6 @@
         public string job { get; set; }
     }
 
-    public class Videos
-    {
-        public VideoResult[] results { get; set; }
-    }
-
-    public class VideoResult
-    {
-        public string iso_639_1 { get; set; }
-        public string iso_3166_1 { get; set; }
-        public string name { get; set; }
-        public string key { get; set; }
-        public string site { get; set; }
-        public int size { get; set; }
-        public string type { get; set; }
-        public bool official { get; set; }
-        public DateTime published_at { get; set; }
-        public string id { get; set; }
-    }
-
     public class Release_Dates
     {
         public ReleaseResult[] results { get; set; }
@@ -114,15 +121,8 @@
         public string certification { get; set; }
         public string iso_639_1 { get; set; }
         public string note { get; set; }
-        public DateTime release_date { get; set; }
+        public string release_date { get; set; }
         public int type { get; set; }
-    }
-
-    public class Images
-    {
-        public object[] backdrops { get; set; }
-        public object[] logos { get; set; }
-        public object[] posters { get; set; }
     }
 
     public class Genre
@@ -151,5 +151,6 @@
         public string iso_639_1 { get; set; }
         public string name { get; set; }
     }
+
 
 }

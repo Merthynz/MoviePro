@@ -1,6 +1,7 @@
 ﻿namespace MoviePro.Models.TMDB
 {
 
+
     public class ActorDetail
     {
         public bool adult { get; set; }
@@ -18,5 +19,6 @@
         public float popularity { get; set; }
         public string profile_path { get; set; }
     }
+
 
 }

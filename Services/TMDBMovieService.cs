@@ -6,6 +6,8 @@ using MoviePro.Models.TMDB;
 using MoviePro.Services.Interfaces;
 using System.Runtime.Serialization.Json;
 
+#nullable disable
+
 namespace MoviePro.Services
 {
     public class TMDBMovieService : IRemoteMovieService
