@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <!--<Nullable>enable</Nullable>-->
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-MoviePro-B7BFEBCD-ECA5-4528-8790-7534E59D3F45</UserSecretsId>
 	<InvariantGlobalization>true</InvariantGlobalization>
