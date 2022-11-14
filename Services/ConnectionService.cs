@@ -1,5 +1,7 @@
 ﻿using Npgsql;
 
+#nullable disable
+
 namespace MoviePro.Services
 {
     public class ConnectionService

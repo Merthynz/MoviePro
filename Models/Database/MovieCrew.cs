@@ -1,4 +1,6 @@
-﻿namespace MoviePro.Models.Database
+﻿#nullable disable
+
+namespace MoviePro.Models.Database
 {
     public class MovieCrew
     {

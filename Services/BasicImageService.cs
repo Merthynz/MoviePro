@@ -1,5 +1,6 @@
 ﻿using MoviePro.Services.Interfaces;
 
+#nullable disable
 
 namespace MoviePro.Services
 {

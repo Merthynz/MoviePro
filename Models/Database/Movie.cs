@@ -1,4 +1,6 @@
-﻿using MoviePro.Enums;
+﻿#nullable disable
+
+using MoviePro.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;

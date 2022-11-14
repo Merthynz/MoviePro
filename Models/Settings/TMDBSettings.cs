@@ -1,4 +1,6 @@
-﻿namespace MoviePro.Models.Settings
+﻿#nullable disable
+
+namespace MoviePro.Models.Settings
 {
     public class TMDBSettings
     {
