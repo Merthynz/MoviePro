@@ -13,13 +13,15 @@ namespace MoviePro.Services
         private readonly ApplicationDbContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IConfiguration _configuration;
 
-        public SeedService(IOptions<AppSettings> appSettings, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public SeedService(IOptions<AppSettings> appSettings, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             _appSettings = appSettings.Value;
             _dbContext = dbContext;
             _userManager = userManager;
             _roleManager = roleManager;
+            _configuration = configuration;
         }
 
         public async Task ManageDataAsync()
@@ -39,7 +41,8 @@ namespace MoviePro.Services
         {
             if (_dbContext.Roles.Any())
                 return;
-            var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole;
+            //var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole;
+            var adminRole = _configuration["DCRole"];
             await _roleManager.CreateAsync(new IdentityRole(adminRole));
         }
 
@@ -47,15 +50,30 @@ namespace MoviePro.Services
         {
             if (_userManager.Users.Any())
                 return;
-            var credentials = _appSettings.MovieProSettings.DefaultCredentials;
+            //var credentials = _appSettings.MovieProSettings.DefaultCredentials;
+            //var newUser = new IdentityUser()
+            //{
+            //    Email = credentials.DCEmail,
+            //    UserName = credentials.DCEmail,
+            //    EmailConfirmed = true
+            //};
+            //await _userManager.CreateAsync(newUser, credentials.DCPassword);
+            //await _userManager.AddToRoleAsync(newUser, credentials.DCRole);
+
+            var userCredentials = _configuration["DCEmail"];
+            var seedPassword = _configuration["DCPassword"];
+            var seedRole = _configuration["DCRole"];
+
             var newUser = new IdentityUser()
             {
-                Email = credentials.DCEmail,
-                UserName = credentials.DCEmail,
+                Email = userCredentials,
+                UserName = userCredentials,
                 EmailConfirmed = true
             };
-            await _userManager.CreateAsync(newUser, credentials.DCPassword);
-            await _userManager.AddToRoleAsync(newUser, credentials.DCRole);
+
+            await _userManager.CreateAsync(newUser, seedPassword);
+            await _userManager.AddToRoleAsync(newUser, seedRole);
+
         }
 
         private async Task SeedCollections()
