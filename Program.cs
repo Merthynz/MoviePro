@@ -21,7 +21,11 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//var newAppSettings = builder.Configuration.GetSection("AppSettings")["MovieProSettings"];
+
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+//builder.Services.Configure<AppSettings>(builder.Configuration.GetSection(newAppSettings));
+
 
 builder.Services.AddTransient<SeedService>();
 
