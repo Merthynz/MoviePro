@@ -21,8 +21,8 @@ namespace MoviePro.Models.Settings
 
     public class DefaultCredentials
     {
-        public string Role { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string DCRole { get; set; }
+        public string DCEmail { get; set; }
+        public string DCPassword { get; set; }
     }
 }
