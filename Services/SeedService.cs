@@ -60,19 +60,40 @@ namespace MoviePro.Services
             //await _userManager.CreateAsync(newUser, credentials.DCPassword);
             //await _userManager.AddToRoleAsync(newUser, credentials.DCRole);
 
-            var userCredentials = _configuration["DCEmail"];
-            var seedPassword = _configuration["DCPassword"];
-            var seedRole = _configuration["DCRole"];
 
+            var userCredentials = _appSettings.MovieProSettings.DefaultCredentials.DCEmail ?? Environment.GetEnvironmentVariable("DCEmail");
+            var seedPassword = _appSettings.MovieProSettings.DefaultCredentials.DCPassword ?? Environment.GetEnvironmentVariable("DCPassword");
+            var seedRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole ?? Environment.GetEnvironmentVariable("DCRole");
+            
+            
             var newUser = new IdentityUser()
             {
                 Email = userCredentials,
                 UserName = userCredentials,
                 EmailConfirmed = true
             };
-
             await _userManager.CreateAsync(newUser, seedPassword);
             await _userManager.AddToRoleAsync(newUser, seedRole);
+
+
+
+
+
+
+
+            //var userCredentials = _configuration["DCEmail"];
+            //var seedPassword = _configuration["DCPassword"];
+            //var seedRole = _configuration["DCRole"];
+
+            //var newUser = new IdentityUser()
+            //{
+            //    Email = userCredentials,
+            //    UserName = userCredentials,
+            //    EmailConfirmed = true
+            //};
+
+            //await _userManager.CreateAsync(newUser, seedPassword);
+            //await _userManager.AddToRoleAsync(newUser, seedRole);
 
         }
 
