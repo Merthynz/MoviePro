@@ -30,7 +30,7 @@ namespace MoviePro.Services
             var query = $"{_appSettings.TMDBSettings.BaseUrl}/person/{id}";
             var queryParams = new Dictionary<string, string>()
             {
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key", _appSettings.MovieProSettings.TmDbApiKey ?? Environment.GetEnvironmentVariable("TmDbApiKey") },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language }
             };
             var requestUri = QueryHelpers.AddQueryString(query, queryParams);
@@ -61,7 +61,7 @@ namespace MoviePro.Services
             var query = $"{_appSettings.TMDBSettings.BaseUrl}/movie/{id}";
             var queryParams = new Dictionary<string, string>()
             {
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key", _appSettings.MovieProSettings.TmDbApiKey ?? Environment.GetEnvironmentVariable("TmDbApiKey") },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language },
                 { "append_to_response", _appSettings.TMDBSettings.QueryOptions.AppendToResponse }
             };
@@ -94,7 +94,7 @@ namespace MoviePro.Services
 
             var queryParams = new Dictionary<string, string>()
             {
-                { "api_key", _appSettings.MovieProSettings.TmDbApiKey },
+                { "api_key", _appSettings.MovieProSettings.TmDbApiKey ?? Environment.GetEnvironmentVariable("TmDbApiKey") },
                 { "language", _appSettings.TMDBSettings.QueryOptions.Language },
                 { "page", _appSettings.TMDBSettings.QueryOptions.Page }
             };
