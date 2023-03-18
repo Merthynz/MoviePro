@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MoviePro.Data;
-using MoviePro.Models;
 using MoviePro.Models.Settings;
 using MoviePro.Services;
 using MoviePro.Services.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,12 +13,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(ConnectionService.GetConnectionString(builder.Configuration)));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+//var newAppSettings = builder.Configuration.GetSection("AppSettings")["MovieProSettings"];
+
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+//builder.Services.Configure<AppSettings>(builder.Configuration.GetSection(newAppSettings));
+
 
 builder.Services.AddTransient<SeedService>();
 
@@ -31,8 +36,6 @@ builder.Services.AddScoped<IRemoteMovieService, TMDBMovieService>();
 builder.Services.AddScoped<IDataMappingService, TMDBMappingService>();
 
 builder.Services.AddSingleton<IImageService, BasicImageService>();
-
-
 
 var app = builder.Build();
 
