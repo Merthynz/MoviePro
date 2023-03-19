@@ -39,7 +39,7 @@ namespace MoviePro.Services
         {
             if (_dbContext.Roles.Any())
                 return;
-            var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole;
+            var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole ?? Environment.GetEnvironmentVariable("DCRole");
             await _roleManager.CreateAsync(new IdentityRole(adminRole));
         }
 
