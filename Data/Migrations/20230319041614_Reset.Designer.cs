@@ -12,14 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoviePro.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221103230334_Collection")]
-    partial class Collection
+    [Migration("20230319041614_Reset")]
+    partial class Reset
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -233,11 +234,9 @@ namespace MoviePro.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -254,26 +253,21 @@ namespace MoviePro.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<byte[]>("Backdrop")
-                        .IsRequired()
                         .HasColumnType("bytea");
 
                     b.Property<string>("BackdropType")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Overview")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<byte[]>("Poster")
-                        .IsRequired()
                         .HasColumnType("bytea");
 
                     b.Property<string>("PosterType")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Rating")
@@ -286,15 +280,12 @@ namespace MoviePro.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Tagline")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("TrailerUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<float>("VoteAverage")
@@ -317,22 +308,18 @@ namespace MoviePro.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Character")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Department")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -380,22 +367,18 @@ namespace MoviePro.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Department")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Job")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
