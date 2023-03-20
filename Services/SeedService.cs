@@ -37,16 +37,16 @@ namespace MoviePro.Services
 
         private async Task SeedRolesAsync()
         {
-            if (_dbContext.Roles.Any())
-                return;
+            //if (_dbContext.Roles.Any())
+            //    return;
             var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole;
             await _roleManager.CreateAsync(new IdentityRole(adminRole));
         }
 
         private async Task SeedUsersAsync()
         {
-            if (_userManager.Users.Any())
-                return;
+            //if (_userManager.Users.Any())
+            //    return;
 
             var userCredentials = _appSettings.MovieProSettings.DefaultCredentials.DCEmail;
             var seedPassword = _appSettings.MovieProSettings.DefaultCredentials.DCPassword;
