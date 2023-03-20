@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoviePro.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230320220453_Reset")]
+    [Migration("20230320221715_Reset")]
     partial class Reset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
