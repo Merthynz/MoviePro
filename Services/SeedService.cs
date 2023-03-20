@@ -39,7 +39,7 @@ namespace MoviePro.Services
         {
             if (_dbContext.Roles.Any())
                 return;
-            var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole ?? Environment.GetEnvironmentVariable("DCRole");
+            var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole;
             await _roleManager.CreateAsync(new IdentityRole(adminRole));
         }
 
@@ -48,9 +48,9 @@ namespace MoviePro.Services
             if (_userManager.Users.Any())
                 return;
 
-            var userCredentials = _appSettings.MovieProSettings.DefaultCredentials.DCEmail ?? Environment.GetEnvironmentVariable("DCEmail");
-            var seedPassword = _appSettings.MovieProSettings.DefaultCredentials.DCPassword ?? Environment.GetEnvironmentVariable("DCPassword");
-            var seedRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole ?? Environment.GetEnvironmentVariable("DCRole");
+            var userCredentials = _appSettings.MovieProSettings.DefaultCredentials.DCEmail;
+            var seedPassword = _appSettings.MovieProSettings.DefaultCredentials.DCPassword;
+            var seedRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole;
             
             var newUser = new IdentityUser()
             {

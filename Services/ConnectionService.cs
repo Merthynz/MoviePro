@@ -8,7 +8,7 @@ namespace MoviePro.Services
     {
         public static string GetConnectionString(IConfiguration configuration)
         {
-            var connectionString = configuration.GetSection("pgSettings")["pgConnection"];
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
             var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
             return string.IsNullOrEmpty(databaseUrl) ? connectionString : BuildConnectionString(databaseUrl);
         }
