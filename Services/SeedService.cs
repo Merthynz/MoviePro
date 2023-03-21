@@ -37,25 +37,28 @@ namespace MoviePro.Services
 
         private async Task SeedRolesAsync()
         {
-            if (_dbContext.Roles.Any())
-                return;
-            var adminRole = _appSettings.MovieProSettings.DefaultCredentials.Role;
+            //if (_dbContext.Roles.Any())
+                //return;
+            var adminRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole ?? Environment.GetEnvironmentVariable("AppSettings:MovieProSettings:DefaultCredentials:DCRole");
             await _roleManager.CreateAsync(new IdentityRole(adminRole));
         }
 
         private async Task SeedUsersAsync()
         {
-            if (_userManager.Users.Any())
-                return;
-            var credentials = _appSettings.MovieProSettings.DefaultCredentials;
+            //if (_userManager.Users.Any())
+            //    return;
+            var seedEmail = _appSettings.MovieProSettings.DefaultCredentials.DCEmail ?? Environment.GetEnvironmentVariable("AppSettings:MovieProSettings:DefaultCredentials:DCEmail");
+            var seedPassword = _appSettings.MovieProSettings.DefaultCredentials.DCPassword ?? Environment.GetEnvironmentVariable("AppSettings:MovieProSettings:DefaultCredentials:DCPassword");
+            var seedRole = _appSettings.MovieProSettings.DefaultCredentials.DCRole ?? Environment.GetEnvironmentVariable("AppSettings:MovieProSettings:DefaultCredentials:DCRole");
+
             var newUser = new IdentityUser()
             {
-                Email = credentials.Email,
-                UserName = credentials.Email,
+                Email = seedEmail,
+                UserName = seedEmail,
                 EmailConfirmed = true
             };
-            await _userManager.CreateAsync(newUser, credentials.Password);
-            await _userManager.AddToRoleAsync(newUser, credentials.Role);
+            await _userManager.CreateAsync(newUser, seedPassword);
+            await _userManager.AddToRoleAsync(newUser, seedRole);
         }
 
         private async Task SeedCollections()
