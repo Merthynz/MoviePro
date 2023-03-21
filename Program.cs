@@ -8,7 +8,7 @@ using MoviePro.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = ConnectionService.GetConnectionString(builder.Configuration);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(ConnectionService.GetConnectionString(builder.Configuration)));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
